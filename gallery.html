@@ -14,15 +14,18 @@
             --gold-light:#f0dfa8;
             --gold-deep:#8f6f2e;
             --cognac:#6e3419;
+            --candy-red:#FF0800;
             --obsidian:#0a0908;
             --charcoal:#161310;
             --cream:#f3ead9;
             --muted:#cdbf9f;
-            --logo-h: clamp(92px, 24vw, 158px);
-            --header-pad: 14px;
+            --logo-h: clamp(120px, 34vw, 220px);
+            --header-pad: 18px;
             --header-h: calc(var(--logo-h) + (var(--header-pad) * 2));
-            --footer-logo-h: clamp(58px, 15vw, 96px);
-            --footer-h: calc(var(--footer-logo-h) + 26px);
+            --footer-logo-h: clamp(72px, 19vw, 116px);
+            --footer-h: calc(var(--footer-logo-h) + 30px);
+            --candy-red: #ff0800;
+            --candy-red-deep: #c40600;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { width: 100%; background-color: var(--obsidian); color: var(--cream); overflow-x: hidden; font-family:'Inter', sans-serif; }
@@ -34,7 +37,7 @@
             min-height: 100dvh;
         }
         header {
-            background: linear-gradient(180deg, #fdfbf6 0%, #f3ead9 100%);
+            background: #ffffff;
             padding: var(--header-pad) max(20px, env(safe-area-inset-left));
             display: flex; justify-content: center; align-items: center;
             position: fixed; width: 100%; top: 0; left: 0; z-index: 100;
@@ -66,18 +69,18 @@
             position: absolute; right: max(20px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); z-index: 110;
         }
 
-        main { margin-top: var(--header-h); margin-bottom: var(--footer-h); padding: 26px max(20px, env(safe-area-inset-left)); min-height: calc(100dvh - var(--header-h) - var(--footer-h)); width: 100%; }
+        main { margin-top: var(--header-h); margin-bottom: var(--footer-h); padding: 38px max(24px, env(safe-area-inset-left)) 44px; min-height: calc(100dvh - var(--header-h) - var(--footer-h)); width: 100%; }
 
         .eyebrow-label{
             font-family:'Inter', sans-serif; font-weight:600; letter-spacing:.28em; font-size:.68rem;
-            color: var(--gold); text-transform:uppercase; margin-bottom:10px; opacity:.9;
+            color: var(--gold); text-transform:uppercase; margin-bottom:16px; opacity:.9;
         }
         .page-header-title {
             font-family:'Bebas Neue', sans-serif; font-weight:400;
             font-size: clamp(1.9rem, 7vw, 2.7rem); letter-spacing:.06em; text-transform: uppercase;
             background: linear-gradient(180deg, var(--gold-light) 10%, var(--gold) 55%, var(--gold-deep));
             -webkit-background-clip: text; background-clip: text; color: transparent;
-            padding-bottom: 16px; margin-bottom: 20px; position: relative; display:inline-block;
+            padding-bottom: 18px; margin-bottom: 30px; position: relative; display:inline-block;
         }
         .page-header-title::after{
             content:''; position:absolute; left:0; bottom:0; width:72px; height:2px;
@@ -85,12 +88,12 @@
         }
         .info-paragraph {
             font-family:'Cormorant Garamond', serif; font-style: italic; font-weight:500;
-            font-size: clamp(1.08rem, 3.2vw, 1.3rem); line-height: 1.75; color: var(--muted); margin-bottom: 16px;
+            font-size: clamp(1.08rem, 3.2vw, 1.3rem); line-height: 1.85; color: var(--muted); margin-bottom: 20px;
         }
         .lux-card{
             background: linear-gradient(150deg, rgba(255,255,255,0.05), rgba(201,166,85,0.04));
             border: 1px solid rgba(201,166,85,0.28);
-            border-radius: 16px; padding: 24px 22px; margin-bottom: 20px;
+            border-radius: 18px; padding: 32px 26px; margin-bottom: 30px;
             box-shadow: 0 14px 34px rgba(0,0,0,0.4);
         }
         .lux-card .info-paragraph:last-child{ margin-bottom:0; }
@@ -104,7 +107,7 @@
         }
         .sidebar-menu.open { right: 0; }
         .close-menu-btn { align-self: flex-end; background: none; border: none; color: var(--gold); font-size: 1.3rem; margin-bottom: 34px; cursor: pointer; font-family:'Inter', sans-serif; letter-spacing:.08em; }
-        .nav-links-list { display: flex; flex-direction: column; gap: 10px; }
+        .nav-links-list { display: flex; flex-direction: column; gap: 16px; }
         .nav-links-list a {
             font-family:'Bebas Neue', sans-serif; letter-spacing:.05em;
             color: var(--cream); text-decoration: none; font-size: 1.35rem;
@@ -113,16 +116,54 @@
         .nav-links-list a:hover { background-color: rgba(201,166,85,0.08); color: var(--gold); border-left: 3px solid var(--gold); }
 
         footer {
-            background: linear-gradient(120deg, var(--cognac) 0%, var(--obsidian) 85%);
-            color: var(--gold-light); text-align: center; height: var(--footer-h);
+            background: var(--candy-red);
+            color: #ffffff; text-align: center; height: var(--footer-h);
             display: flex; align-items: center; justify-content: center; gap: 14px;
             position: fixed; width: 100%; bottom: 0; left: 0; z-index: 100;
             padding: 6px max(15px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom));
-            border-top: 1px solid rgba(201,166,85,0.35);
+            border-top: 2px solid rgba(255,255,255,0.25);
+            box-shadow: 0 -6px 24px rgba(255,8,0,0.35);
         }
-        footer span{ font-family:'Inter', sans-serif; font-weight:600; letter-spacing:.06em; font-size:0.82rem; text-transform:uppercase; }
-        .footer-logo { height: var(--footer-logo-h); width: auto; display: block; object-fit: contain; filter: drop-shadow(0 0 8px rgba(201,166,85,0.5)); }
+        footer span{ font-family:'Inter', sans-serif; font-weight:700; letter-spacing:.06em; font-size:0.82rem; text-transform:uppercase; color:#ffffff; }
+        .footer-logo { height: var(--footer-logo-h); width: auto; display: block; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
 
+        .category-hero-img {
+            width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+            border-radius: 18px; border: 1px solid rgba(201,166,85,0.3);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.4); margin-bottom: 30px;
+        }
+        .back-to-gallery-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
+            color: var(--obsidian); text-decoration: none; padding: 15px 32px; font-weight: 700;
+            font-family:'Inter', sans-serif; border-radius: 30px; text-transform: uppercase;
+            font-size: 0.95rem; letter-spacing:.04em; box-shadow: 0 8px 22px rgba(201,166,85,0.4);
+        }
+
+
+        .media-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 30px;
+        }
+        .media-item {
+            position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 1 / 1;
+            border: 1px solid rgba(201,166,85,0.3); box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+            display: block; text-decoration: none; color: inherit;
+        }
+        .media-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .media-item .media-tag {
+            position: absolute; left: 8px; bottom: 8px; font-family:'Inter', sans-serif; font-weight:600;
+            font-size: .62rem; letter-spacing:.12em; text-transform: uppercase; color: var(--obsidian);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold)); padding: 4px 9px; border-radius: 20px;
+        }
+        .video-showcase {
+            border-radius: 18px; overflow: hidden; border: 1px solid rgba(201,166,85,0.35);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.45); margin-bottom: 30px; background: var(--charcoal);
+        }
+        .video-showcase video { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+        .video-caption {
+            padding: 12px 16px; font-family:'Inter', sans-serif; font-size: .78rem; letter-spacing:.08em;
+            text-transform: uppercase; color: var(--gold); font-weight:600;
+        }
 
     </style>
 </head>
@@ -138,6 +179,41 @@
         <h2 class="page-header-title">Gallery</h2>
         <div class="lux-card">
             <p class="info-paragraph">Browse our creative and visual asset archive. This hub holds official media documentation, street-style aesthetic guidelines, corporate partner booth designs, and premium content guidelines engineered for our event networks.</p>
+        </div>
+
+        <div class="video-showcase">
+            <video controls preload="metadata" poster="event-recap-poster.JPG">
+                <source src="event-recap.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+            </video>
+            <p class="video-caption">Event Recap &mdash; Puffer Season Highlights</p>
+        </div>
+
+        <div class="media-grid">
+            <a class="media-item" href="live.html">
+                <img src="live.JPG" alt="Puffer Season crowd and lighting">
+                <span class="media-tag">Live</span>
+            </a>
+            <a class="media-item" href="lounge.html">
+                <img src="lounge.JPG" alt="Cognac velvet lounge setup">
+                <span class="media-tag">Lounge</span>
+            </a>
+            <a class="media-item" href="djset.html">
+                <img src="djset.JPG" alt="Amapiano DJ set">
+                <span class="media-tag">DJ Set</span>
+            </a>
+            <a class="media-item" href="style.html">
+                <img src="style.JPG" alt="Streetwear puffer fashion detail">
+                <span class="media-tag">Style</span>
+            </a>
+            <a class="media-item" href="liquidgold.html">
+                <img src="liquidgold.JPG" alt="Gold mixology cocktail service">
+                <span class="media-tag">Liquid Gold</span>
+            </a>
+            <a class="media-item" href="crowd.html">
+                <img src="crowd.JPG" alt="Crowd celebrating at night event">
+                <span class="media-tag">Crowd</span>
+            </a>
         </div>
     </main>
 
