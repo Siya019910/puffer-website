@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DJ Set | Puffer Season™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        :root{
+            --gold:#c9a655;
+            --gold-light:#f0dfa8;
+            --gold-deep:#8f6f2e;
+            --cognac:#6e3419;
+            --candy-red:#FF0800;
+            --obsidian:#0a0908;
+            --charcoal:#161310;
+            --cream:#f3ead9;
+            --muted:#cdbf9f;
+            --logo-h: clamp(120px, 34vw, 220px);
+            --header-pad: 18px;
+            --header-h: calc(var(--logo-h) + (var(--header-pad) * 2));
+            --footer-logo-h: clamp(72px, 19vw, 116px);
+            --footer-h: calc(var(--footer-logo-h) + 30px);
+            --candy-red: #ff0800;
+            --candy-red-deep: #c40600;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; background-color: var(--obsidian); color: var(--cream); overflow-x: hidden; font-family:'Inter', sans-serif; }
+        body{
+            background:
+                radial-gradient(ellipse 900px 500px at 50% 0%, rgba(201,166,85,0.10), transparent 65%),
+                radial-gradient(ellipse 700px 500px at 100% 100%, rgba(110,52,25,0.12), transparent 60%),
+                var(--obsidian);
+            min-height: 100dvh;
+        }
+        header {
+            background: #ffffff;
+            padding: var(--header-pad) max(20px, env(safe-area-inset-left));
+            display: flex; justify-content: center; align-items: center;
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 100;
+            height: var(--header-h);
+            box-shadow: 0 6px 28px rgba(0,0,0,0.55);
+            overflow: hidden;
+        }
+        header::before{
+            content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            width: 260px; height: 260px;
+            background: radial-gradient(circle, rgba(201,166,85,0.30), transparent 70%);
+            pointer-events:none; z-index:0;
+        }
+        .gold-shimmer-bar{
+            position:absolute; bottom:0; left:0; width:220%; height:3px;
+            background: linear-gradient(90deg, transparent, var(--gold-light) 45%, var(--gold) 55%, transparent);
+            animation: shimmerMove 4.5s linear infinite;
+            z-index: 2;
+        }
+        @keyframes shimmerMove{ from{ transform:translateX(-27%);} to{ transform:translateX(0%);} }
+        @media (prefers-reduced-motion: reduce){ .gold-shimmer-bar{ animation:none; } }
+        .logo-box {
+            height: var(--logo-h); width: auto; display: block; object-fit: contain;
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 105;
+            filter: drop-shadow(0 4px 16px rgba(201,166,85,0.45));
+        }
+        .menu-toggle-btn {
+            background: none; border: none; color: var(--cognac); font-size: 1.8rem; cursor: pointer;
+            position: absolute; right: max(20px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); z-index: 110;
+        }
+
+        main { margin-top: var(--header-h); margin-bottom: var(--footer-h); padding: 38px max(24px, env(safe-area-inset-left)) 44px; min-height: calc(100dvh - var(--header-h) - var(--footer-h)); width: 100%; }
+
+        .eyebrow-label{
+            font-family:'Inter', sans-serif; font-weight:600; letter-spacing:.28em; font-size:.68rem;
+            color: var(--gold); text-transform:uppercase; margin-bottom:16px; opacity:.9;
+        }
+        .page-header-title {
+            font-family:'Bebas Neue', sans-serif; font-weight:400;
+            font-size: clamp(1.9rem, 7vw, 2.7rem); letter-spacing:.06em; text-transform: uppercase;
+            background: linear-gradient(180deg, var(--gold-light) 10%, var(--gold) 55%, var(--gold-deep));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            padding-bottom: 18px; margin-bottom: 30px; position: relative; display:inline-block;
+        }
+        .page-header-title::after{
+            content:''; position:absolute; left:0; bottom:0; width:72px; height:2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+        .info-paragraph {
+            font-family:'Cormorant Garamond', serif; font-style: italic; font-weight:500;
+            font-size: clamp(1.08rem, 3.2vw, 1.3rem); line-height: 1.85; color: var(--muted); margin-bottom: 20px;
+        }
+        .lux-card{
+            background: linear-gradient(150deg, rgba(255,255,255,0.05), rgba(201,166,85,0.04));
+            border: 1px solid rgba(201,166,85,0.28);
+            border-radius: 18px; padding: 32px 26px; margin-bottom: 30px;
+            box-shadow: 0 14px 34px rgba(0,0,0,0.4);
+        }
+        .lux-card .info-paragraph:last-child{ margin-bottom:0; }
+
+        .sidebar-menu {
+            position: fixed; top: 0; right: -100%; width: 85%; max-width: 320px; height: 100%;
+            background: linear-gradient(160deg, var(--charcoal), var(--obsidian));
+            z-index: 200; transition: right 0.4s ease; padding: 26px max(24px, env(safe-area-inset-right)) 26px 24px;
+            display: flex; flex-direction: column; box-shadow: -8px 0 32px rgba(0,0,0,0.75);
+            border-left: 1px solid rgba(201,166,85,0.25);
+        }
+        .sidebar-menu.open { right: 0; }
+        .close-menu-btn { align-self: flex-end; background: none; border: none; color: var(--gold); font-size: 1.3rem; margin-bottom: 34px; cursor: pointer; font-family:'Inter', sans-serif; letter-spacing:.08em; }
+        .nav-links-list { display: flex; flex-direction: column; gap: 16px; }
+        .nav-links-list a {
+            font-family:'Bebas Neue', sans-serif; letter-spacing:.05em;
+            color: var(--cream); text-decoration: none; font-size: 1.35rem;
+            padding: 14px 16px; border-radius: 8px; border-left: 3px solid transparent; display: block;
+        }
+        .nav-links-list a:hover { background-color: rgba(201,166,85,0.08); color: var(--gold); border-left: 3px solid var(--gold); }
+
+        footer {
+            background: var(--candy-red);
+            color: #ffffff; text-align: center; height: var(--footer-h);
+            display: flex; align-items: center; justify-content: center; gap: 14px;
+            position: fixed; width: 100%; bottom: 0; left: 0; z-index: 100;
+            padding: 6px max(15px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom));
+            border-top: 2px solid rgba(255,255,255,0.25);
+            box-shadow: 0 -6px 24px rgba(255,8,0,0.35);
+        }
+        footer span{ font-family:'Inter', sans-serif; font-weight:700; letter-spacing:.06em; font-size:0.82rem; text-transform:uppercase; color:#ffffff; }
+        .footer-logo { height: var(--footer-logo-h); width: auto; display: block; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
+
+        .category-hero-img {
+            width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+            border-radius: 18px; border: 1px solid rgba(201,166,85,0.3);
+            box-shadow: 0 14px 34px rgba(0,0,0,0.4); margin-bottom: 30px;
+        }
+        .back-to-gallery-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
+            color: var(--obsidian); text-decoration: none; padding: 15px 32px; font-weight: 700;
+            font-family:'Inter', sans-serif; border-radius: 30px; text-transform: uppercase;
+            font-size: 0.95rem; letter-spacing:.04em; box-shadow: 0 8px 22px rgba(201,166,85,0.4);
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Kozo" class="logo-box">
+        <button class="menu-toggle-btn" onclick="openMenu()">☰</button>
+        <div class="gold-shimmer-bar"></div>
+    </header>
+
+    <main>
+        <p class="eyebrow-label">The Booth</p>
+        <h2 class="page-header-title">DJ Set</h2>
+        <img src="djset.JPG" alt="Amapiano DJ set" class="category-hero-img">
+        <div class="lux-card">
+            <p class="info-paragraph">Behind the decks, our curated lineup of Amapiano and hip-hop selectors keep the crowd moving from the opening set through to the final encore.</p>
+        </div>
+        <div class="back-row">
+            <a href="gallery.html" class="back-to-gallery-btn">← Back to Gallery</a>
+        </div>
+    </main>
+
+    <nav class="sidebar-menu" id="sideNavDrawer">
+        <button class="close-menu-btn" onclick="closeMenu()">✕ CLOSE</button>
+        <div class="nav-links-list">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="events.html">Events</a>
+            <a href="artists.html">Artists</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="tickets.html">Tickets</a>
+        </div>
+    </nav>
+
+    <footer>
+        <img src="logo1.png" alt="Kozo Logo" class="footer-logo">
+        <span>Kozo Travel and Tourism Pty Ltd</span>
+    </footer>
+    <script>
+        function openMenu() { document.getElementById('sideNavDrawer').classList.add('open'); }
+        function closeMenu() { document.getElementById('sideNavDrawer').classList.remove('open'); }
+    </script>
+</body>
+</html>
